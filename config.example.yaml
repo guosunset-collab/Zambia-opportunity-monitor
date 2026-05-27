@@ -1,0 +1,80 @@
+run:
+  timezone: Africa/Lusaka
+  output_dir: reports
+  database_path: database/opportunities.sqlite3
+  log_dir: logs
+  max_items_per_source: 25
+  request_timeout_seconds: 20
+  retries: 2
+  user_agent: "Zambia-Infrastructure-Opportunity-Monitor/0.1 (+business-intelligence)"
+
+email:
+  enabled: false
+
+sources:
+  government:
+    zppa:
+      enabled: true
+      urls:
+        - https://eprocure.zppa.org.zm/
+        - https://www.zppa.org.zm/
+    rda:
+      enabled: true
+      urls:
+        - https://www.rda.org.zm/
+    nrfa:
+      enabled: true
+      urls:
+        - https://nrfa.org.zm/
+    zambia_airports:
+      enabled: true
+      urls:
+        - https://www.zacl.co.zm/
+  ppp:
+    ministry_finance_ppp:
+      enabled: true
+      urls:
+        - https://www.mofnp.gov.zm/
+  donors:
+    world_bank:
+      enabled: true
+      urls:
+        - https://projects.worldbank.org/en/projects-operations/procurement?lang=en&searchTerm=&countrycode_exact=ZM
+  newspapers:
+    zambia_daily_mail:
+      enabled: true
+      urls:
+        - https://www.daily-mail.co.zm/
+  social:
+    facebook:
+      enabled: true
+      urls:
+        - https://www.facebook.com/RoadDevelopmentAgency/
+        - https://www.facebook.com/ZambiaPublicProcurementAuthority/
+        - https://www.facebook.com/ZambiaAirports/
+
+keywords:
+  include:
+    - tender
+    - invitation for bids
+    - eoi
+    - expression of interest
+    - rfp
+    - rfq
+    - procurement notice
+    - deadline
+    - closing date
+    - consultancy services
+    - works contract
+    - prequalification
+  exclude:
+    - homepage
+    - about us
+    - contact
+    - training
+    - public procurement act
+    - airport services
+    - news articles without deadline
+    - general notices
+    - currency notices
+    - toll payment notices
